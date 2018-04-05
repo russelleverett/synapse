@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="byobgyn.com.synapse.BotSelectActivity">
+
+    <LinearLayout
+        android:id="@+id/bot_select"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        android:orientation="vertical">
+
+        <fragment
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="byobgyn.com.synapse.CurrencyFragment"
+            tools:layout="@layout/fragment_currency"/>
+
+        <TextView
+            android:id="@+id/available_bots"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:layout_marginLeft="7dp"
+            android:layout_marginStart="7dp"/>
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/refresh_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ListView
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/highlight_alpha"
+                android:padding="10dp"
+                android:choiceMode="singleChoice"
+                android:listSelector="@color/highlight_alpha_label"
+                android:scrollbarThumbVertical="@color/highlight">
+
+            </ListView>
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/purchase_slot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@drawable/add"/>
+
+</android.support.design.widget.CoordinatorLayout>

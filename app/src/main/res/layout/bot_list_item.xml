@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView style="@style/bot_list.item"
+        android:id="@+id/bot_name"
+        android:layout_weight="0.3"
+        android:layout_marginRight="1dp"
+        android:layout_marginEnd="1dp"
+        android:textAllCaps="true"/>
+
+    <TextView style="@style/bot_list.item"
+        android:id="@+id/bot_location"
+        android:layout_weight="0.4"
+        android:textAllCaps="true"/>
+
+    <TextView style="@style/bot_list.item"
+        android:id="@+id/bot_rating"
+        android:layout_weight="0.3"
+        android:textAllCaps="true"/>
+
+</LinearLayout>

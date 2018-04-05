@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Synapse</string>
+    <string name="action_settings">Settings</string>
+    <string name="available_bots">Available Bots</string>
+    <string name="details">Details</string>
+    <string name="bot_type">TYPE</string>
+    <string name="bot_location">LOCATION</string>
+    <string name="bot_rating">RATING</string>
+    <string name="cancel">CANCEL</string>
+    <string name="upgrade">UPGRADE</string>
+    <string name="cpu">CPU</string>
+    <string name="memory">MEMORY</string>
+    <string name="storage">STORAGE</string>
+    <string name="bandwidth">BANDWIDTH</string>
+    <string name="missions">MISSIONS</string>
+    <string name="transfer">TRANSFER</string>
+    <string name="specs">SPECS:</string>
+    <string name="purchase">PURCHASE</string>
+    <string name="upgrade_component">UPGRADE COMPONENT</string>
+    <string name="currency">CURRENCY</string>
+    <string name="credit_balance">CREDIT BALANCE</string>
+    <string name="tag_balance">TAG BALANCE</string>
+    <string name="tags">TAGS</string>
+    <string name="credits">CREDITS</string>
+    <string name="purchase_slot">PURCHASE SLOT</string>
+    <string name="bot_value">TOTAL VALUE</string>
+    <string name="bot_insurance">INSURANCE COST</string>
+</resources>

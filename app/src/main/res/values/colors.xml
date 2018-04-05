@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="darkest_blue">#063455</color>
+    <color name="dark_blue">#055674</color>
+    <color name="bluest">#1B669D</color>
+    <color name="bluer">#277FB1</color>
+    <color name="blue">#76A9D4</color>
+    <color name="highlight">#B8D3F1</color>
+    <color name="highlight_alpha">#35B8D3F1</color>
+    <color name="highlight_alpha_label">#55B8D3F1</color>
+</resources>

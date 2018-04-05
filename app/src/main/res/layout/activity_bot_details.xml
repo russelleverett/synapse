@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    tools:context="byobgyn.com.synapse.BotDetailsActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:background="@android:color/black">
+
+        <fragment
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="byobgyn.com.synapse.CurrencyFragment"
+            tools:layout="@layout/fragment_currency"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/header">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="7dp"
+                android:orientation="vertical">
+
+                <!--Header-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/highlight"
+                        android:layout_weight="0.3"
+                        android:background="@color/highlight_alpha"
+                        android:layout_marginEnd="3dp"
+                        android:layout_marginRight="3dp"
+                        android:paddingStart="5dp"
+                        android:paddingLeft="5dp"
+                        android:text="@string/bot_type"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/highlight"
+                        android:layout_weight="0.3"
+                        android:background="@color/highlight_alpha"
+                        android:layout_marginRight="3dp"
+                        android:paddingLeft="5dp"
+                        android:text="@string/bot_location"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/highlight"
+                        android:layout_weight="0.3"
+                        android:background="@color/highlight_alpha"
+                        android:layout_marginRight="3dp"
+                        android:paddingLeft="5dp"
+                        android:text="@string/bot_rating"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/bot_type"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/blue"
+                        android:layout_weight="0.3"
+                        android:paddingLeft="5dp"
+                        android:textAllCaps="true"/>
+
+                    <TextView
+                        android:id="@+id/bot_location"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/blue"
+                        android:layout_weight="0.3"
+                        android:paddingLeft="5dp"
+                        android:textAllCaps="true"/>
+
+                    <TextView
+                        android:id="@+id/bot_rating"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/blue"
+                        android:layout_weight="0.3"
+                        android:paddingLeft="5dp"
+                        android:textAllCaps="true"/>
+                </LinearLayout>
+
+                <!--SPECS-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/specs"/>
+
+                <LinearLayout style="@style/synapse_module_detail">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/highlight"
+                        android:layout_weight="0.4"
+                        android:text="@string/cpu"/>
+
+                    <TextView
+                        android:id="@+id/cpu"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/blue"
+                        android:layout_weight="0.2"/>
+
+                    <Button
+                        android:id="@+id/btnUpgradeCpu"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.3"
+                        android:textColor="@color/button_text"
+                        android:background="@drawable/button_back"
+                        android:text="@string/upgrade" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/synapse_module_detail">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/highlight"
+                        android:layout_weight="0.4"
+                        android:text="@string/memory"/>
+
+                    <TextView
+                        android:id="@+id/memory"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/blue"
+                        android:layout_weight="0.2"/>
+
+                    <Button
+                        android:id="@+id/btnUpgradeMemory"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.3"
+                        android:textColor="@color/button_text"
+                        android:background="@drawable/button_back"
+                        android:text="@string/upgrade" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/synapse_module_detail">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/highlight"
+                        android:layout_weight="0.4"
+                        android:text="@string/storage"/>
+
+                    <TextView
+                        android:id="@+id/storage"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/blue"
+                        android:layout_weight="0.2"/>
+
+                    <Button
+                        android:id="@+id/btnUpgradeStorage"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.3"
+                        android:textColor="@color/button_text"
+                        android:background="@drawable/button_back"
+                        android:text="@string/upgrade" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/synapse_module_detail">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/highlight"
+                        android:layout_weight="0.4"
+                        android:text="@string/bandwidth"/>
+
+                    <TextView
+                        android:id="@+id/bandwidth"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/blue"
+                        android:layout_weight="0.2"/>
+
+                    <Button
+                        android:id="@+id/btnUpgradeBandwidth"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.3"
+                        android:textColor="@color/button_text"
+                        android:background="@drawable/button_back"
+                        android:text="@string/upgrade" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <!--FOOTER-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true">
+
+            <!--COSTS-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:baselineAligned="false">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.5"
+                    android:paddingStart="20dp"
+                    android:paddingLeft="20dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/credits"
+                        android:contentDescription="@string/currency"
+                        android:layout_marginRight="10dp"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/bot_value"
+                            android:textColor="@color/blue"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/bot_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.5">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/credits"
+                        android:contentDescription="@string/currency"
+                        android:layout_marginRight="10dp"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/bot_insurance"
+                            android:textColor="@color/blue"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/bot_insurance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:text="@string/missions"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnMissions"
+                    android:layout_weight="0.5"
+                    android:textColor="@color/button_text"
+                    android:background="@drawable/button_back"
+                    android:layout_margin="7dp"/>
+
+                <Button
+                    android:text="@string/transfer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnTransfer"
+                    android:layout_weight="0.5"
+                    android:textColor="@color/button_text"
+                    android:background="@drawable/button_back"
+                    android:layout_margin="7dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

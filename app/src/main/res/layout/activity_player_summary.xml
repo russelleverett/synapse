@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_player_summary"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="byobgyn.com.synapse.PlayerSummaryActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black">
+
+        <!--HEADER-->
+        <fragment
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="byobgyn.com.synapse.CurrencyFragment"
+            tools:layout="@layout/fragment_currency"/>
+
+        <!--CONTENT-->
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_below="@id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:text="RANKS"
+                android:layout_marginLeft="7dp"/>
+
+            <!--COMBAT RANKING-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/highlight_alpha"
+                android:layout_margin="7dp">
+
+                <ImageView
+                    android:layout_width="115dp"
+                    android:layout_height="115dp"
+                    android:contentDescription="Cyber Combat"
+                    android:background="@color/bluest"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_margin="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/blue"
+                        android:text="Cyber Combat:" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:text="HARMLESS" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Progress: 25%"
+                        android:textColor="@color/highlight"
+                        android:layout_marginTop="20dp"/>
+
+                    <ProgressBar
+                        android:id="@+id/combat_progress"
+                        style="@style/CustomProgressBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:progress="25"
+                        android:layout_marginTop="5dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--COMMERCE RANKING-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/highlight_alpha"
+                android:layout_margin="7dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_margin="10dp"
+                    android:layout_weight="0.5">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/blue"
+                        android:text="Commerce:" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:text="WORTHLESS" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Progress: 75%"
+                        android:textColor="@color/highlight"
+                        android:layout_marginTop="20dp"/>
+
+                    <ProgressBar
+                        android:id="@+id/commerce_progress"
+                        style="@style/CustomProgressBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:progress="75"
+                        android:layout_marginTop="5dp"/>
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="115dp"
+                    android:layout_height="115dp"
+                    android:contentDescription="Commerce"
+                    android:background="@color/bluest"/>
+            </LinearLayout>
+
+            <!--NOTORIETY RANKING-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/highlight_alpha"
+                android:layout_margin="7dp">
+
+                <ImageView
+                    android:layout_width="115dp"
+                    android:layout_height="115dp"
+                    android:contentDescription="NOTORIETY"
+                    android:background="@color/bluest"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_margin="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/blue"
+                        android:text="Notoriety:" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:text="UNKNOWN" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Progress: 55%"
+                        android:textColor="@color/highlight"
+                        android:layout_marginTop="20dp"/>
+
+                    <ProgressBar
+                        android:id="@+id/notoriety_progress"
+                        style="@style/CustomProgressBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:progress="55"
+                        android:layout_marginTop="5dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--FOOTER-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true">
+
+            <Button
+                android:text="@string/available_bots"
+                android:textAllCaps="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnShowBots"
+                android:textColor="@color/button_text"
+                android:background="@drawable/button_back"
+                android:layout_margin="7dp"/>
+            </LinearLayout>
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

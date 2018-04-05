@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    tools:context="byobgyn.com.synapse.BotTransferActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:background="@android:color/black">
+
+        <fragment
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="byobgyn.com.synapse.CurrencyFragment"
+            tools:layout="@layout/fragment_currency"/>
+
+        <LinearLayout
+            android:id="@+id/filter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/header"
+            android:layout_margin="7dp">
+
+            <TextView
+                android:id="@+id/txtFilter"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:background="@color/highlight_alpha"
+                android:textColor="@color/highlight"/>
+
+            <Button
+                android:id="@+id/btnFilter"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="SEARCH"
+                android:background="@drawable/button_back"/>
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/nodeList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/filter"
+            android:background="@color/highlight_alpha"
+            android:padding="10dp"
+            android:choiceMode="singleChoice"
+            android:listSelector="@color/highlight_alpha_label"
+            android:scrollbarThumbVertical="@color/highlight">
+
+        </ListView>
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
