@@ -5,47 +5,54 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/txtCost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
         android:id="@+id/txtName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_bottom"
+        android:textColor="@android:color/white"
+        android:textAllCaps="true"/>
 
-    <TextView
-        android:id="@+id/txtDistance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <!--SECURITY-->
+    <LinearLayout style="@style/node_info">
 
-    <TextView
-        android:id="@+id/txtDuration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView style="@style/node_info.label"
+            android:labelFor="@+id/txtSecurity"
+            android:text="@string/security_label"/>
 
-    <TextView
-        android:id="@+id/txtSecurity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView style="@style/node_info.value"
+            android:id="@+id/txtSecurity"/>
+    </LinearLayout>
+    
+    <!--DISTANCE-->
+    <LinearLayout style="@style/node_info" >
+        <TextView style="@style/node_info.label"
+            android:labelFor="@+id/txtDistance"
+            android:text="@string/distance_label"/>
 
-    <TextView
-        android:id="@+id/txtEconomy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView style="@style/node_info.value"
+            android:id="@+id/txtDistance"/>
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtGovernment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <!--DURATION-->
+    <LinearLayout style="@style/node_info">
 
-    <TextView
-        android:id="@+id/txtPopulation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView style="@style/node_info.label"
+            android:labelFor="@+id/txtDuration"
+            android:text="@string/duration_label"/>
 
-    <TextView
-        android:id="@+id/txtState"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView style="@style/node_info.value"
+            android:id="@+id/txtDuration"/>
+    </LinearLayout>
+
+    <!--COST-->
+    <LinearLayout style="@style/node_info"
+        android:paddingBottom="5dp">
+
+        <TextView style="@style/node_info.label"
+            android:labelFor="@+id/txtCost"
+            android:text="@string/cost_label"/>
+
+        <TextView style="@style/node_info.value"
+            android:id="@+id/txtCost"/>
+    </LinearLayout>
 </LinearLayout>

@@ -4,21 +4,69 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView style="@style/bot_list.item"
-        android:id="@+id/bot_name"
-        android:layout_weight="0.3"
-        android:layout_marginRight="1dp"
-        android:layout_marginEnd="1dp"
-        android:textAllCaps="true"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
 
-    <TextView style="@style/bot_list.item"
-        android:id="@+id/bot_location"
-        android:layout_weight="0.4"
-        android:textAllCaps="true"/>
+        <!--NAME / RATING-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:orientation="vertical"
+            android:background="@color/highlight_alpha"
+            android:layout_marginRight="3dp"
+            android:layout_marginEnd="3dp"
+            android:padding="7dp">
 
-    <TextView style="@style/bot_list.item"
-        android:id="@+id/bot_rating"
-        android:layout_weight="0.3"
-        android:textAllCaps="true"/>
+            <TextView
+                android:id="@+id/bot_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:textColor="@color/highlight"/>
 
+            <TextView
+                android:id="@+id/bot_rating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:textColor="@color/blue"/>
+
+            <TextView
+                android:id="@+id/bot_integrity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:textColor="@color/blue"/>
+        </LinearLayout>
+
+        <!--STATUS / LOCATION-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:orientation="vertical"
+            android:background="@color/highlight_alpha"
+            android:padding="7dp">
+
+            <TextView
+                android:id="@+id/bot_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:textColor="@color/highlight"/>
+
+            <ProgressBar
+                android:id="@+id/missionProgress"
+                style="@style/CustomProgressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+    </LinearLayout>
 </LinearLayout>

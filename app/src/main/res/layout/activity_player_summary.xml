@@ -34,7 +34,8 @@
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
                 android:text="RANKS"
-                android:layout_marginLeft="7dp"/>
+                android:layout_marginLeft="7dp"
+                android:layout_marginStart="7dp"/>
 
             <!--COMBAT RANKING-->
             <LinearLayout
@@ -63,15 +64,15 @@
                         android:text="Cyber Combat:" />
 
                     <TextView
+                        android:id="@+id/combat_rank"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@android:color/white"
-                        android:text="HARMLESS" />
+                        android:textColor="@android:color/white" />
 
                     <TextView
+                        android:id="@+id/combat_progress_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Progress: 25%"
                         android:textColor="@color/highlight"
                         android:layout_marginTop="20dp"/>
 
@@ -80,7 +81,6 @@
                         style="@style/CustomProgressBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:progress="25"
                         android:layout_marginTop="5dp"/>
                 </LinearLayout>
             </LinearLayout>
@@ -107,15 +107,15 @@
                         android:text="Commerce:" />
 
                     <TextView
+                        android:id="@+id/commerce_rank"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@android:color/white"
-                        android:text="WORTHLESS" />
+                        android:textColor="@android:color/white" />
 
                     <TextView
+                        android:id="@+id/commerce_progress_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Progress: 75%"
                         android:textColor="@color/highlight"
                         android:layout_marginTop="20dp"/>
 
@@ -124,7 +124,6 @@
                         style="@style/CustomProgressBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:progress="75"
                         android:layout_marginTop="5dp"/>
                 </LinearLayout>
 
@@ -162,15 +161,15 @@
                         android:text="Notoriety:" />
 
                     <TextView
+                        android:id="@+id/notoriety_rank"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@android:color/white"
-                        android:text="UNKNOWN" />
+                        android:textColor="@android:color/white" />
 
                     <TextView
+                        android:id="@+id/notoriety_progress_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Progress: 55%"
                         android:textColor="@color/highlight"
                         android:layout_marginTop="20dp"/>
 
@@ -179,7 +178,6 @@
                         style="@style/CustomProgressBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:progress="55"
                         android:layout_marginTop="5dp"/>
                 </LinearLayout>
             </LinearLayout>

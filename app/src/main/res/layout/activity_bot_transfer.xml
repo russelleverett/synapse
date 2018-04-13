@@ -27,23 +27,33 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_below="@id/header"
-            android:layout_margin="7dp">
+            android:layout_margin="7dp"
+            android:background="@color/highlight_alpha">
 
-            <TextView
+            <EditText
                 android:id="@+id/txtFilter"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.7"
                 android:background="@color/highlight_alpha"
-                android:textColor="@color/highlight"/>
+                android:textColor="@color/highlight"
+                android:hint="@string/enter_node_name"
+                android:textColorHint="@color/highlight_alpha_label"
+                android:paddingLeft="7dp"
+                android:paddingStart="7dp"
+                android:paddingRight="7dp"
+                android:paddingEnd="7dp"
+                android:inputType="text"
+                android:focusableInTouchMode="true"/>
 
             <Button
                 android:id="@+id/btnFilter"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
-                android:text="SEARCH"
-                android:background="@drawable/button_back"/>
+                android:text="@string/search"
+                android:background="@drawable/button_back"
+                android:textColor="@color/highlight"/>
         </LinearLayout>
 
         <ListView
@@ -52,11 +62,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/filter"
             android:background="@color/highlight_alpha"
-            android:padding="10dp"
             android:choiceMode="singleChoice"
             android:listSelector="@color/highlight_alpha_label"
-            android:scrollbarThumbVertical="@color/highlight">
-
+            android:scrollbarThumbVertical="@color/highlight"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp">
         </ListView>
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

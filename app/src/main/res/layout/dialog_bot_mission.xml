@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/darkest_blue"
+    style="@style/synapse_dialog">
+
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_bottom"
+        android:textColor="@android:color/white"
+        android:textAllCaps="true"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--DESTINATION-->
+        <LinearLayout style="@style/node_info">
+            <TextView style="@style/node_info.label"
+                android:labelFor="@+id/txtDestination"
+                android:text="@string/destination_label"/>
+
+            <TextView style="@style/node_info.value"
+                android:id="@+id/txtDestination"/>
+        </LinearLayout>
+
+        <!--RANK-->
+        <LinearLayout style="@style/node_info">
+            <TextView style="@style/node_info.label"
+                android:labelFor="@+id/txtRank"
+                android:text="@string/rank_label"/>
+
+            <TextView style="@style/node_info.value"
+                android:id="@+id/txtRank"/>
+        </LinearLayout>
+
+        <!--DURATION-->
+        <LinearLayout style="@style/node_info">
+            <TextView style="@style/node_info.label"
+                android:labelFor="@+id/txtDuration"
+                android:text="@string/duration_label"/>
+
+            <TextView style="@style/node_info.value"
+                android:id="@+id/txtDuration"/>
+        </LinearLayout>
+
+        <!--REWARDS-->
+        <LinearLayout style="@style/node_info">
+            <TextView style="@style/node_info.label"
+                android:labelFor="@+id/txtRewards"
+                android:text="@string/rewards_label"/>
+
+            <TextView style="@style/node_info.value"
+                android:id="@+id/txtRewards"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dialog_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button style="?android:buttonBarStyle"
+            android:text="@string/cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnCancel"
+            android:layout_weight="0.5"
+            android:textColor="@color/button_text"
+            android:background="@drawable/button_back"
+            android:layout_margin="7dp"/>
+
+        <Button style="?android:buttonBarStyle"
+            android:text="@string/accept"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnConfirm"
+            android:layout_weight="0.5"
+            android:textColor="@color/button_text"
+            android:background="@drawable/button_back"
+            android:layout_margin="7dp"/>
+    </LinearLayout>
+</LinearLayout>

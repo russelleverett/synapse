@@ -9,6 +9,8 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 
 import byobgyn.com.synapse.R;
@@ -18,31 +20,27 @@ import byobgyn.com.synapse.utils.StringUtils;
 public class NodeAdapter extends ArrayAdapter<Node> implements Filterable {
     private ArrayList<Node> nodes;
     private ArrayList<Node> filtered;
-    private LayoutInflater inflator;
+    private LayoutInflater inflater;
 
     public NodeAdapter(Context context, int textViewResourceId, ArrayList<Node> nodes) {
         super(context, textViewResourceId, nodes);
         this.nodes = nodes;
         this.filtered = nodes;
-        inflator = LayoutInflater.from(context);
+        inflater = LayoutInflater.from(context);
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
 
         if(convertView == null) {
-            convertView = inflator.inflate(R.layout.node_list_item, null);
+            convertView = inflater.inflate(R.layout.node_list_item, null);
 
             holder = new ViewHolder();
             holder.txtName = (TextView) convertView.findViewById(R.id.txtName);
             holder.txtSecurity = (TextView) convertView.findViewById(R.id.txtSecurity);
             holder.txtDistance = (TextView) convertView.findViewById(R.id.txtDistance);
             holder.txtDuration = (TextView) convertView.findViewById(R.id.txtDuration);
-            holder.txtEconomy = (TextView) convertView.findViewById(R.id.txtEconomy);
-            holder.txtPopulation = (TextView) convertView.findViewById(R.id.txtPopulation);
-            holder.txtGovernment = (TextView) convertView.findViewById(R.id.txtGovernment);
             holder.txtCost = (TextView) convertView.findViewById(R.id.txtCost);
-            holder.txtState = (TextView) convertView.findViewById(R.id.txtState);
 
             convertView.setTag(holder);
         }
@@ -50,17 +48,15 @@ public class NodeAdapter extends ArrayAdapter<Node> implements Filterable {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        Node node = filtered.get(position);
-        if(node != null) {
-            holder.txtName.setText(node.getName());
-            holder.txtSecurity.setText(node.getSecurity());
-            holder.txtDuration.setText(node.getDuration());
-            holder.txtDistance.setText(node.getDistance());
-            holder.txtEconomy.setText(node.getEconomy());
-            holder.txtPopulation.setText(node.getPopulation());
-            holder.txtGovernment.setText(node.getGovernment());
-            holder.txtCost.setText(StringUtils.convert(node.getCost()));
-            holder.txtState.setText(node.getState());
+        if(filtered.size() > position) {
+            Node node = filtered.get(position);
+            if (node != null) {
+                holder.txtName.setText(node.getName());
+                holder.txtSecurity.setText(node.getSecurity());
+                holder.txtDistance.setText(String.format("%s LY", node.getDistance()));
+                holder.txtCost.setText(String.format("%s CR", StringUtils.convert(node.getCost())));
+                holder.txtDuration.setText(String.format("%s MINS", node.getDuration()));
+            }
         }
 
         return convertView;
@@ -71,14 +67,10 @@ public class NodeAdapter extends ArrayAdapter<Node> implements Filterable {
         TextView txtSecurity;
         TextView txtDistance;
         TextView txtDuration;
-        TextView txtEconomy;
-        TextView txtPopulation;
-        TextView txtGovernment;
         TextView txtCost;
-        TextView txtState;
     }
 
-    @Override
+    @Override @NotNull
     public Filter getFilter() {
         return new Filter() {
             @Override

@@ -55,7 +55,17 @@ public class BotDetailsActivity extends AppCompatActivity implements View.OnClic
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), BotTransferActivity.class);
                 intent.putExtra("bot", Parcels.wrap(bot));
-                startActivity(intent);
+                startActivityForResult(intent, SynapseManager.TRANSFER_OPTIONS);
+            }
+        });
+
+        Button btnMissions = (Button)findViewById(R.id.btnMissions);
+        btnMissions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), BotMissionActivity.class);
+                intent.putExtra("bot", Parcels.wrap(bot));
+                startActivityForResult(intent, SynapseManager.MISSION_OPTIONS);
             }
         });
 
@@ -82,6 +92,19 @@ public class BotDetailsActivity extends AppCompatActivity implements View.OnClic
         populateBotData(bot);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == SynapseManager.TRANSFER_OPTIONS && resultCode == SynapseManager.TRANSFER_COMPLETE)
+            this.finish();
+        else if (requestCode == SynapseManager.MISSION_OPTIONS && resultCode == SynapseManager.MISSION_ACCEPTED)
+            this.finish();
+    }
+
+    public void onClick(View view) {
+        ComponentType type = (ComponentType)view.getTag();
+        SynapseManager.getUpgradeOptions(this, bot, type);
+    }
+
     private void populateBotData(Bot bot) {
         if(bot == null)
             return;
@@ -95,11 +118,6 @@ public class BotDetailsActivity extends AppCompatActivity implements View.OnClic
         txtBandwidth.setText(bot.getBandwidth().getClassRating());
         txtValue.setText(StringUtils.convert(bot.getTotalCost()));
         txtInsurance.setText(StringUtils.convert(bot.getInsuranceCost()));
-    }
-
-    public void onClick(View view) {
-        ComponentType type = (ComponentType)view.getTag();
-        SynapseManager.getUpgradeOptions(this, bot, type);
     }
 
     public void TaskComplete(int messageId, JsonDoc response) {

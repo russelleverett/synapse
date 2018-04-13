@@ -11,12 +11,13 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
-import byobgyn.com.synapse.elements.SlotPurchaseDialog;
+import byobgyn.com.synapse.elements.SynapseDialog;
 import byobgyn.com.synapse.entities.Bot;
 import byobgyn.com.synapse.elements.BotAdapter;
 import byobgyn.com.synapse.entities.Player;
@@ -30,7 +31,7 @@ public class BotSelectActivity extends AppCompatActivity implements SynapseTaskL
 
     private TextView availableBots;
     private SwipeRefreshLayout refreshBots;
-    private SlotPurchaseDialog dialog;
+    private SynapseDialog synDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,15 +45,28 @@ public class BotSelectActivity extends AppCompatActivity implements SynapseTaskL
         botList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View view, int position, long id) {
-                Bot bot = mBots.get(position - 1);
+                final Bot bot = mBots.get(position - 1);
                 if(bot != null) {
-                    if(!bot.isEmpty()) {
+                    if(bot.getStatusId() == 0) {
                         Intent intent = new Intent(getApplicationContext(), BotDetailsActivity.class);
                         intent.putExtra("bot", Parcels.wrap(bot));
                         startActivity(intent);
                     }
+                    else if(bot.getStatusId() == 6 || bot.getStatusId() == 3) {
+                        synDialog = new SynapseDialog(BotSelectActivity.this, "Repair Bot", String.format("Repair bot for %s CR?", bot.getRepairCost()));
+                        synDialog.setOnConfirmListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                SynapseManager.repairBot(BotSelectActivity.this, bot);
+                            }
+                        });
+                        synDialog.show();
+                    }
+                    else if(bot.getStatusId() == 7) {
+                        SynapseManager.getMissionResults(BotSelectActivity.this, bot);
+                    }
                     else {
-                        // TODO: PURCHASE BOT
+                        Toast.makeText(BotSelectActivity.this, "Bot is non-responsive", Toast.LENGTH_LONG).show();
                     }
                 }
             }
@@ -72,9 +86,16 @@ public class BotSelectActivity extends AppCompatActivity implements SynapseTaskL
         purchaseSlot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int cost = Player.getInstance().getSlots() * 100;
-                dialog = new SlotPurchaseDialog(BotSelectActivity.this, cost);
-                dialog.show();
+                int cost = Player.getInstance().getSlots() * 50;
+                synDialog = new SynapseDialog(BotSelectActivity.this, "Upgrade Controller", "Purchase additional bot?");
+                synDialog.setTags(cost);
+                synDialog.setOnConfirmListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        SynapseManager.purchaseSlot(BotSelectActivity.this);
+                    }
+                });
+                synDialog.show();
             }
         });
         purchaseSlot.setEnabled(Player.getInstance().getSlots() <= 10);
@@ -112,10 +133,34 @@ public class BotSelectActivity extends AppCompatActivity implements SynapseTaskL
             refreshBots.setRefreshing(false);
         }
         else if (messageId == SynapseManager.PURCHASE_SLOT) {
-            loadBotList();
-            if(dialog != null) {
-                dialog.dismiss();
+            if(synDialog != null)
+                synDialog.dismiss();
+
+            if(response.has("message"))
+                Toast.makeText(BotSelectActivity.this, response.getString("message"), Toast.LENGTH_LONG).show();
+            else loadBotList();
+        }
+        else if(messageId == SynapseManager.MISSION_RESULTS) {
+            if(response.has("message"))
+                Toast.makeText(BotSelectActivity.this, response.getString("message"), Toast.LENGTH_LONG).show();
+            else if(response.has("summary")) {
+                JsonDoc summary = response.get("summary");
+                String result = summary.getString("Result");
+                String rewards = summary.getString("Rewards");
+
+                String body = String.format("Payment: %s", rewards);
+
+                SynapseDialog missionSummary = new SynapseDialog(BotSelectActivity.this, String.format("Mission Result: %s", result), body, false);
+                missionSummary.show();
+                loadBotList();
             }
+        }
+        else if(messageId == SynapseManager.BOT_REPAIRED) {
+            if(synDialog != null)
+                synDialog.dismiss();
+            if(response.has("message"))
+                Toast.makeText(BotSelectActivity.this, response.getString("message"), Toast.LENGTH_LONG).show();
+            else loadBotList();
         }
     }
 }

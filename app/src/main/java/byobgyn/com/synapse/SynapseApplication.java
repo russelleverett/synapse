@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
-import byobgyn.com.synapse.entities.Player;
 import byobgyn.com.synapse.managers.SynapseManager;
 import byobgyn.com.synapse.managers.SynapseTaskListener;
 import byobgyn.com.synapse.utils.JsonDoc;
@@ -35,7 +34,10 @@ public class SynapseApplication extends Application {
         SynapseManager.login(new SynapseTaskListener() {
             @Override
             public void TaskComplete(int messageId, JsonDoc response) {
-
+                if(messageId == SynapseManager.PLAYER_LOGIN) {
+                    if(response.has("message"))
+                        Toast.makeText(SynapseApplication.this, response.getString("message"), Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

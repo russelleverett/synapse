@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    tools:context="byobgyn.com.synapse.BotMissionActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:background="@android:color/black">
+
+        <fragment
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="byobgyn.com.synapse.CurrencyFragment"
+            tools:layout="@layout/fragment_currency"/>
+
+        <ListView
+            android:id="@+id/mission_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/header"
+            android:choiceMode="singleChoice"
+            android:listSelector="@color/highlight_alpha_label"
+            android:scrollbarThumbVertical="@color/highlight"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp" >
+
+        </ListView>
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

@@ -1,8 +1,9 @@
 package byobgyn.com.synapse.entities;
 
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+import org.joda.time.Minutes;
 import org.parceler.Parcel;
-
-import java.math.BigDecimal;
 
 import byobgyn.com.synapse.utils.JsonDoc;
 
@@ -17,11 +18,15 @@ public class Bot {
     private Component storage;
     private Component bandwidth;
     private Node node;
-    private boolean empty;
     private String retailCost;
     private String totalCost;
     private int statusId;
     private String signalStrength;
+    private int timeToComplete;
+    private String repairCost;
+    private String insuranceCost;
+    private int integrity;
+    private Mission mission;
 
     public int getId() {
         return id;
@@ -54,9 +59,9 @@ public class Bot {
         this.node = node;
     }
     public String getRating() {
-        if(empty) return "N/A";
-
         int overall = (getRating(cpu) + getRating(memory) + getRating(storage) + getRating(bandwidth)) / 4;
+        float integrityHit = integrity / 100f;
+        overall = Math.round(overall * integrityHit);
         if (overall >= 90)
             return "A";
         else if (overall >= 80)
@@ -91,12 +96,6 @@ public class Bot {
     public void setBandwidth(Component bandwidth) {
         this.bandwidth = bandwidth;
     }
-    public boolean isEmpty() {
-        return empty;
-    }
-    private void setEmpty(boolean empty) {
-        this.empty = empty;
-    }
     public String getRetailCost() {
         return retailCost;
     }
@@ -107,7 +106,11 @@ public class Bot {
         return totalCost;
     }
     public void setTotalCost(String totalCost) {
-        this.totalCost = totalCost;
+        if(totalCost != null) {
+            if(totalCost.contains("."))
+                this.totalCost = totalCost.substring(0, totalCost.indexOf("."));
+            else this.totalCost = totalCost;
+        }
     }
     public int getStatusId() {
         return statusId;
@@ -122,11 +125,36 @@ public class Bot {
         this.signalStrength = signalStrength;
     }
     public String getInsuranceCost() {
-        BigDecimal insurance = new BigDecimal(getTotalCost());
-        return insurance.multiply(new BigDecimal(0.05)).toBigInteger().toString();
+        return insuranceCost;
     }
-
-    public Bot() {
+    public void setInsuranceCost(String insuranceCost) {
+        this.insuranceCost = insuranceCost;
+    }
+    public int getTimeToComplete() {
+        return timeToComplete;
+    }
+    public void setTimeToComplete(int timeToComplete) {
+        this.timeToComplete = timeToComplete;
+    }
+    public String getRepairCost() {
+        return repairCost;
+    }
+    public void setRepairCost(String repairCost) {
+        if(repairCost != null && repairCost.contains("."))
+            this.repairCost = repairCost.substring(0, repairCost.indexOf("."));
+        this.repairCost = repairCost;
+    }
+    public int getIntegrity() {
+        return integrity;
+    }
+    public void setIntegrity(int integrity) {
+        this.integrity = integrity;
+    }
+    public Mission getMission() {
+        return mission;
+    }
+    public void setMission(Mission mission) {
+        this.mission = mission;
     }
 
     public static Bot fromJson(JsonDoc doc) {
@@ -134,9 +162,10 @@ public class Bot {
         rvalue.setId(doc.getInt("Id"));
         rvalue.setName(doc.getString("Name"));
         rvalue.setSizeClass(doc.getInt("SizeClass"));
-        rvalue.setStatusId(doc.getInt("StatusId"));
+        rvalue.setStatusId(doc.getInt("Status"));
         rvalue.setBaseStorage(doc.getInt("BaseStorage"));
         rvalue.setSignalStrength(doc.getString("SignalStrength"));
+        rvalue.setIntegrity(doc.getInt("Integrity"));
 
         // components
         rvalue.setCpu(Component.fromJson(doc.get("CPU")));
@@ -152,9 +181,25 @@ public class Bot {
             }
         }
 
+        // mission
+        if(doc.has("Mission")) {
+            JsonDoc missionNode = doc.get("Mission");
+            if(missionNode != null)
+                rvalue.setMission(Mission.fromJson(missionNode));
+        }
+
         // cost
         rvalue.setRetailCost(doc.getString("RetailCost"));
         rvalue.setTotalCost(doc.getString("TotalValue"));
+        rvalue.setRepairCost(doc.getString("RepairCost"));
+        rvalue.setInsuranceCost(doc.getString("InsuranceCost"));
+
+        // completion date
+        String completionDate = doc.getString("CompletionDate");
+        if(completionDate != null) {
+            DateTime completionTime = DateTime.parse(completionDate);
+            rvalue.setTimeToComplete(Minutes.minutesBetween(DateTime.now(DateTimeZone.UTC), completionTime).getMinutes());
+        }
 
         return rvalue;
     }

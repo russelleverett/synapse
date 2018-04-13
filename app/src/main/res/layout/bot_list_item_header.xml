@@ -9,12 +9,8 @@
         android:text="@string/bot_type"/>
 
     <TextView style="@style/bot_list.header"
-        android:layout_weight="0.4"
-        android:text="@string/bot_location"/>
-
-    <TextView style="@style/bot_list.header"
-        android:layout_weight="0.3"
+        android:layout_weight="0.7"
         android:layout_marginRight="0dp"
         android:layout_marginEnd="0dp"
-        android:text="@string/bot_rating"/>
+        android:text="@string/status"/>
 </LinearLayout>

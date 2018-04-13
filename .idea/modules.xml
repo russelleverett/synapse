@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/edol.iml" filepath="$PROJECT_DIR$/edol.iml" />
+      <module fileurl="file://$PROJECT_DIR$/synapse.iml" filepath="$PROJECT_DIR$/synapse.iml" />
     </modules>
   </component>
 </project>

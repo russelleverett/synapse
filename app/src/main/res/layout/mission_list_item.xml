@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_below="@id/header">
+
+    <ImageView
+        android:id="@+id/mission_image"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/darkest_blue"
+        android:layout_weight="0.1"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:layout_weight="0.4">
+
+        <TextView
+            android:id="@+id/mission_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DATA MINING"
+            android:textColor="@color/highlight"/>
+
+        <TextView
+            android:id="@+id/mission_rewards"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="858,279 CR, REP+++, INF++"
+            android:textColor="@color/bluer"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:layout_weight="0.4">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/highlight"
+            android:text="Destination"/>
+
+        <TextView
+            android:id="@+id/mission_destination"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/bluer"
+            android:text="HEL [8.96LY]"/>
+    </LinearLayout>
+</LinearLayout>

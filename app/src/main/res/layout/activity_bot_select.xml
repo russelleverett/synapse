@@ -40,9 +40,9 @@
                 android:id="@+id/list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/highlight_alpha"
                 android:padding="10dp"
                 android:choiceMode="singleChoice"
+                android:background="@color/highlight_alpha"
                 android:listSelector="@color/highlight_alpha_label"
                 android:scrollbarThumbVertical="@color/highlight">
 

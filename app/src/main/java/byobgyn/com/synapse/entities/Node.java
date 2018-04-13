@@ -17,7 +17,7 @@ public class Node {
     // for transfer options
     private String distance;
     private String cost;
-    private int duration;
+    private String duration;
 
     public int getId() {
         return id;
@@ -41,13 +41,18 @@ public class Node {
         return cost;
     }
     public void setCost(String cost) {
-        this.cost = cost;
+        if(cost != null)
+            this.cost = cost.substring(0, cost.indexOf("."));
     }
-    public int getDuration() {
+    public String getDuration() {
         return duration;
     }
-    public void setDuration(int duration) {
-        this.duration = duration;
+    public void setDuration(String duration) {
+        if(duration != null) {
+            if (duration.contains("."))
+                this.duration = duration.substring(0, duration.indexOf("."));
+            else this.duration = duration;
+        }
     }
     public String getGovernment() {
         return government;
@@ -93,7 +98,7 @@ public class Node {
         if(doc.has("Distance")) {
             node.setDistance(doc.getString("Distance"));
             node.setCost(doc.getString("Cost"));
-            node.setDuration(doc.getInt("Time"));
+            node.setDuration(doc.getString("Time"));
         }
         return node;
     }

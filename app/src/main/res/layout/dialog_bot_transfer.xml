@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/darkest_blue"
+    style="@style/synapse_dialog">
+
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_bottom"
+        android:textColor="@android:color/white"
+        android:textAllCaps="true"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--SECURITY-->
+        <LinearLayout style="@style/node_info">
+            <TextView style="@style/node_info.label"
+                android:labelFor="@+id/txtSecurity"
+                android:text="@string/security_label"/>
+
+            <TextView style="@style/node_info.value"
+                android:id="@+id/txtSecurity"/>
+        </LinearLayout>
+
+        <!--GOVERNMENT-->
+        <LinearLayout style="@style/node_info">
+            <TextView style="@style/node_info.label"
+                android:labelFor="@+id/txtGovernment"
+                android:text="@string/government_label"/>
+
+            <TextView style="@style/node_info.value"
+                android:id="@+id/txtGovernment"/>
+        </LinearLayout>
+
+        <!--POPULATION-->
+        <LinearLayout style="@style/node_info">
+            <TextView style="@style/node_info.label"
+                android:labelFor="@+id/txtPopulation"
+                android:text="@string/population_label"/>
+
+            <TextView style="@style/node_info.value"
+                android:id="@+id/txtPopulation"/>
+        </LinearLayout>
+
+        <!--ECONOMY-->
+        <LinearLayout style="@style/node_info">
+            <TextView style="@style/node_info.label"
+                android:labelFor="@+id/txtEconomy"
+                android:text="@string/economy_label"/>
+
+            <TextView style="@style/node_info.value"
+                android:id="@+id/txtEconomy"/>
+        </LinearLayout>
+
+        <!--STATE-->
+        <LinearLayout style="@style/node_info">
+            <TextView style="@style/node_info.label"
+                android:labelFor="@+id/txtState"
+                android:text="@string/state_label"/>
+
+            <TextView style="@style/node_info.value"
+                android:id="@+id/txtState"/>
+        </LinearLayout>
+
+        <!--DISTANCE-->
+        <LinearLayout style="@style/node_info" >
+            <TextView style="@style/node_info.label"
+                android:labelFor="@+id/txtDistance"
+                android:text="@string/distance_label"/>
+
+            <TextView style="@style/node_info.value"
+                android:id="@+id/txtDistance"/>
+        </LinearLayout>
+
+        <!--COST-->
+        <LinearLayout style="@style/node_info"
+            android:paddingBottom="5dp">
+
+            <TextView style="@style/node_info.label"
+                android:labelFor="@+id/txtCost"
+                android:text="@string/cost_label"/>
+
+            <TextView style="@style/node_info.value"
+                android:id="@+id/txtCost"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dialog_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button style="?android:buttonBarStyle"
+            android:text="@string/cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnCancel"
+            android:layout_weight="0.5"
+            android:textColor="@color/button_text"
+            android:background="@drawable/button_back"
+            android:layout_margin="7dp"/>
+
+        <Button style="?android:buttonBarStyle"
+            android:text="@string/transfer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnConfirm"
+            android:layout_weight="0.5"
+            android:textColor="@color/button_text"
+            android:background="@drawable/button_back"
+            android:layout_margin="7dp"/>
+    </LinearLayout>
+</LinearLayout>
